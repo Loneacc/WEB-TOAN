@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FPT Timeline</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-image: url('https://www.transparenttextures.com/patterns/hexellence.png');
+      background-color: #f6f6f6;
+      margin: 0;
+      padding: 0;
+    }
+
+    .timeline {
+      position: relative;
+      width: 800px;
+      margin: 50px auto;
+      padding: 20px 0;
+      height: 800px;
+    }
+
+    .timeline::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      width: 4px;
+      background: #444;
+      transform: translateX(-50%);
+    }
+
+    .timeline::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 0;
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+      border-top: 14px solid #444;
+    }
+
+    .timeline-event {
+      position: relative;
+      width: 50%;
+      padding: 20px 40px;
+      box-sizing: border-box;
+    }
+
+    .timeline-event.left {
+      left: 0;
+      text-align: right;
+    }
+
+    .timeline-event.right {
+      left: 50%;
+    }
+/*2010*/
+    .timeline-circle2010 {
+      position: absolute;
+      top: 90px;
+      left: 15%;
+      transform: translate(-50%, -50%);
+      background: linear-gradient(to top, #4d4c4c, #bdbbbb) ;
+      color: white;
+      width: 70px;
+      height: 70px;
+      line-height: 70px;
+      text-align: center;
+      border-radius: 50%;
+      font-weight: bold;
+      box-shadow: 0 0 4px rgba(0,0,0,0.3);
+      z-index: 2;
+    }
+      .mini-circle {
+      position: absolute;
+      top: 45%;
+      left: -22%;
+      width: 20px;
+      height: 20px;
+      background-color: #4d4c4c;
+      border-radius: 50%;
+      z-index: 3;
+    }
+    .timeline-circle2010::before {
+      content: "";
+      position: absolute;
+      left: 0%;
+      top: 50%;
+      width: 30px;
+      height: 6px;
+      background: #4d4c4c;
+      transform: translate(-100%, -50%);
+      z-index: 1;
+    }
+    .timeline-content2010 {
+        text-align: left;
+        margin-right: -35px ;
+        position: relative;
+        top: -20px;
+        right: -7%;
+      background: transparent;
+      padding: 15px;
+      border-radius: 15px;
+      border: 3px dashed #4d4c4c;
+    }
+    .timeline-content2010 ul li{
+        margin-right: -30px;
+    }
+    
+/*2010*/
+/*2013*/
+    .timeline-circle2013 {
+      position: absolute;
+      top: 20px;
+      left: 85%;
+      transform: translate(-50%, -50%);
+      background: linear-gradient(to bottom, #f8a385,#e75420);
+      color: white;
+      width: 70px;
+      height: 70px;
+      line-height: 70px;
+      text-align: center;
+      border-radius: 50%;
+      font-weight: bold;
+      box-shadow: 0 0 4px rgba(0,0,0,0.3);
+      z-index: 2;
+    }
+    .timeline-circle2013::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 140%;
+      width: 30px;
+      height: 6px;
+      background:  #f97316;
+      transform: translate(-100%, -50%);
+      z-index: -1;
+    }
+    .circle {
+      position: absolute;
+      top: 29.7%;
+      left: 48.7%;
+      width: 20px;
+      height: 20px;
+      background-color: #f97316;
+      border-radius: 50%;
+      z-index: 3;
+    }
+    .timeline-content2013 {
+        text-align: left;
+        margin-left: -5px ;
+        position: relative;
+        top: -60px;
+        right: 6%;
+      background: transparent;
+      padding: 15px;
+      border-radius: 15px;
+      border: 3px dashed #f97316;
+    }
+    .timeline-content2013 ul li{
+        margin-left: -30px;
+    }
+/*2013*/
+/*2019*/
+    .timeline-circle2019 {
+      position: absolute;
+      top: 0px;
+      left: 15%;
+      transform: translate(-50%, -50%);
+      background: linear-gradient(to top, #4d4c4c, #bdbbbb) ;
+      color: white;
+      width: 70px;
+      height: 70px;
+      line-height: 70px;
+      text-align: center;
+      border-radius: 50%;
+      font-weight: bold;
+      box-shadow: 0 0 4px rgba(0,0,0,0.3);
+      z-index: 2;
+    }
+    .circle-mini2019 {
+      position: absolute;
+      top: 50%;
+      left: -22%;
+      width: 20px;
+      height: 20px;
+      background-color: #4d4c4c;
+      border-radius: 50%;
+      z-index: 3;
+    }
+    .timeline-circle2019::before {
+      content: "";
+      position: absolute;
+      top: 52%;
+      left: 0%;
+      width: 30px;
+      height: 6px;
+      background: #4d4c4c;
+      transform: translate(-100%, -50%);
+      z-index: -1;
+    }
+    .timeline-content2019 {
+        text-align: left;
+        margin-right: -35px ;
+        position: relative;
+        top: -110px;
+        right: -7%;
+      background: transparent;
+      padding: 15px;
+      border-radius: 15px;
+      border: 3px dashed #4d4c4c;
+    }
+    
+/*2019*/
+/*2019*/
+    .timeline-circle4 {
+        position: absolute;
+      top: -60px;
+      left: 85%;
+      transform: translate(-50%, -50%);
+      background: linear-gradient(to bottom, #f8a385,#e75420);
+      color: white;
+      width: 70px;
+      height: 70px;
+      line-height: 70px;
+      text-align: center;
+      border-radius: 50%;
+      font-weight: bold;
+      box-shadow: 0 0 4px rgba(0,0,0,0.3);
+      z-index: 2;
+    }
+    .timeline-circle4::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 140%;
+      width: 30px;
+      height: 6px;
+      background:  #f97316;
+      transform: translate(-100%, -50%);
+      z-index: -1;
+    }
+    .circle-mini4 {
+      position: absolute;
+      top: 45%;
+      left: 116%;
+      width: 20px;
+      height: 20px;
+      background-color: #f97316;
+      border-radius: 50%;
+      z-index: 3;
+    }
+    .timeline-content4 {
+        text-align: left;
+        margin-left: -5px ;
+        position: relative;
+        top: -150px;
+        right: 6%;
+      background: transparent;
+      padding: 45px;
+      border-radius: 15px;
+      border: 3px dashed #f97316;
+    }
+/*2024*/
+.timeline-circle2024 {
+      position: absolute;
+      top: -100px;
+      left: 15%;
+      transform: translate(-50%, -50%);
+      background: linear-gradient(to top, #4d4c4c, #bdbbbb) ;
+      color: white;
+      width: 70px;
+      height: 70px;
+      line-height: 70px;
+      text-align: center;
+      border-radius: 50%;
+      font-weight: bold;
+      box-shadow: 0 0 4px rgba(0,0,0,0.3);
+      z-index: 2;
+    }
+ .timeline-circle2024::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 0%;
+      width: 30px;
+      height: 6px;
+      background: #4d4c4c;
+      transform: translate(-100%, -50%);
+      z-index: -1;
+    }
+    .circle-mini2024 {
+      position: absolute;
+      top: 45%;
+      left: -22%;
+      width: 20px;
+      height: 20px;
+      background-color: #4d4c4c;
+      border-radius: 50%;
+      z-index: 3;
+    }
+    .timeline-content2024 {
+        text-align: left;
+        margin-right: -35px ;
+        position: relative;
+        top: -190px;
+        right: -7%;
+      background: transparent;
+      padding: 45px;
+      border-radius: 15px;
+      border: 3px dashed #4d4c4c;
+    }
+  </style>
+</head>
+<body>
+  <div class="timeline">
+    <div class="circle"></div>
+    <div class="timeline-event right">
+      <div class="timeline-circle2010">2010</div>
+      <div class="timeline-content2010">
+        <div class="mini-circle"></div>
+        <strong>Thành lập cao đẳng thực hành FPT Polytechnic</strong>
+        <ul>
+          <li>Đào tạo kỹ sư, cử nhân cao đẳng thực hành.</li>
+          <li>Bước tiến quan trọng trong việc mở rộng hệ đào tạo.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="timeline-event left">
+      <div class="timeline-circle2013">2013</div>
+      <div class="timeline-content2013">
+        <strong>Thành lập K-Beauty thuộc FPT Polytechnic</strong>
+        <ul>
+          <li>Đào tạo ngành thẩm mỹ và làm đẹp.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="timeline-event right">
+      <div class="timeline-circle2019">2019</div>
+      <div class="timeline-content2019">
+        <div class="circle-mini2019"></div>
+        <strong>Thành lập chương trình phổ thông cao đẳng</strong>
+        <ul>
+          <li>Đào tạo nghề cho học sinh THCS trở lên.</li>
+          <li>Lấy bằng cao đẳng chính quy.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="timeline-event left">
+      <div class="timeline-circle4">2019</div>
+      <div class="timeline-content4">
+        <div class="circle-mini4"></div>
+        <strong>Hitech gia nhập FPT Polytechnic</strong>
+      </div>
+    </div>
+
+    <div class="timeline-event right">
+      <div class="timeline-circle2024">2024</div>
+      <div class="timeline-content2024">
+        <div class="circle-mini2024"></div>
+        <strong>Chính thức đổi tên thành FPT Polyschool</strong>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>

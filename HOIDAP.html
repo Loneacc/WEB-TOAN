@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HỎI ĐÁP</title>
+    <style>
+    .Button {
+  position: relative;
+  border: none;
+  color: #fff;
+  font-weight: bold;
+padding: 8px 16px;
+  width: 9em;
+  height: 3em;
+  line-height: 2em;
+  text-align: center;
+  font-size: 400%;
+  background: linear-gradient(90deg, #ff0000, #ff7e00, #ffeb3b, #ffffff, #ff0000);
+background-size: 300%;
+
+  background-size: 300%;
+  border-radius: 100px;
+  text-transform: uppercase;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.Button:hover {
+  animation: animated 8s linear infinite;
+}
+
+.Button::before {
+  content: "";
+  position: absolute;
+  inset: -5px;
+  z-index: -1;
+  background: linear-gradient(90deg, #ff0000, #ff7e00, #ffeb3b, #ffffff, #ff0000);
+background-size: 400%;
+  border-radius: 100px;
+  transition: 0.5s;
+}
+
+.Button:hover::before {
+  filter: blur(20px);
+}
+
+@keyframes animated {
+  0% {
+    background-position: 0%;
+  }
+
+  100% {
+    background-position: 400%;
+  }
+}
+    </style>
+</head>
+<body>
+    <div style="text-align: center; margin-top: 100px;">
+      <button class="Button">HỎI ĐÁP</button>
+    </div>
+  </body>
+  
+</html>

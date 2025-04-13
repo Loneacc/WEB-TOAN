@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FPT POLYSCHOOL</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      overflow-x: hidden;
+    }
+    nav {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      z-index: 10;
+    }
+    nav {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      z-index: 10;
+    }
+    nav a {
+      color: rgba(255, 255, 255, 0.6);
+      text-decoration: none;
+      margin: 0 10px;
+      font-size: 12px;
+      font-weight: normal;
+      text-transform: uppercase;
+      transition: color 0.3s;
+    }
+    nav a:hover {
+      color: #ffe0cc;
+    }
+    nav .search-icon {
+      display: inline-block;
+      vertical-align: middle;
+      margin-left: 10px;
+      color: rgba(255, 255, 255, 0.6);
+    }
+    nav .search-icon::before {
+      content: "\1F50D"; 
+      font-size: 14px;
+    }
+    header {
+      overflow: hidden;
+      width: 100%;
+      height: 300px;
+      position: relative;
+    }
+    .slider {
+      display: flex;
+      width: 300%;
+      height: 100%;
+      animation: slide 6s linear infinite;
+    }
+    .slider img {
+      width: 100vw;
+      height: 300px;
+      object-fit: cover;
+    }
+   
+    .content {
+      padding: 20px;
+      text-align: center;
+    }
+    .content h1 {
+      position: relative;
+      display: inline-block;
+    }
+    .content h1::after {
+      content: "";
+      position: absolute;
+      bottom: -8px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 150px;
+      height: 2px;
+      background-color: rgb(255, 81, 0);
+      border-radius: 2px;
+    }
+    .content img {
+      margin-top: 20px;
+      max-width: 90%;
+      height: auto;
+    }
+    .vision {
+      margin-top: 30px;
+      display: inline-block;
+      padding: 10px 60px;
+      background-color: #f37021;
+      color: white;
+      border-radius: 50px;
+      font-size: 24px;
+      font-weight: bold;
+      clip-path: polygon(10% 0%, 90% 0%, 100% 50%, 90% 100%, 10% 100%, 0% 50%);
+      box-shadow: 123 4px 6px rgba(0, 0, 0, 0.2);
+      position: relative;
+      
+    }
+    .sub-vision {
+      margin-top: 25px;
+      font-size: 26px;
+      color: #333;
+      font-style: italic;
+    }
+    .sub-vision1 {
+        text-align: center;
+        font-size: 25px;
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+    .sub-vision2 {
+        margin-top: 25px;
+      font-size: 22px;
+      color: #333;
+      font-style: italic;
+    }
+  /*  }
+    body {
+      font-family: Arial, sans-serif;
+      background-image: url('https://www.transparenttextures.com/patterns/hexellence.png');
+      background-color: #f6f6f6;
+      margin: 0;
+      padding: 0;
+    }
+*/
+    .timeline {
+      position: relative;
+      width: 800px;
+      margin: 50px auto;
+      padding: 20px 0;
+      height: 700px;
+    }
+
+    .timeline::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      width: 4px;
+      background: #444;
+      transform: translateX(-50%);
+    }
+
+    .timeline::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 0;
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+      border-top: 14px solid #444;
+    }
+
+    .timeline-event {
+      position: relative;
+      width: 50%;
+      padding: 20px 40px;
+      box-sizing: border-box;
+    }
+
+    .timeline-event.left {
+      left: 0;
+      text-align: right;
+    }
+
+    .timeline-event.right {
+      left: 50%;
+    }
+/*2010*/
+    .timeline-circle2010 {
+      position: absolute;
+      top: 90px;
+      left: 15%;
+      transform: translate(-50%, -50%);
+      background: linear-gradient(to top, #4d4c4c, #bdbbbb) ;
+      color: white;
+      width: 70px;
+      height: 70px;
+      line-height: 70px;
+      text-align: center;
+      border-radius: 50%;
+      font-weight: bold;
+      box-shadow: 0 0 4px rgba(0,0,0,0.3);
+      z-index: 2;
+    }
+      .mini-circle {
+      position: absolute;
+      top: 54%;
+      left: -22%;
+      width: 20px;
+      height: 20px;
+      background-color: #4d4c4c;
+      border-radius: 50%;
+      z-index: 3;
+    }
+    .timeline-circle2010::before {
+      content: "";
+      position: absolute;
+      left: 0%;
+      top: 50%;
+      width: 30px;
+      height: 6px;
+      background: #4d4c4c;
+      transform: translate(-100%, -50%);
+      z-index: 1;
+    }
+    .timeline-content2010 {
+        text-align: left;
+        margin-right: -35px ;
+        position: relative;
+        top: -20px;
+        right: -7%;
+      background: transparent;
+      padding: 15px;
+      border-radius: 15px;
+      border: 3px dashed #4d4c4c;
+    }
+    .timeline-content2010 ul li{
+        margin-left: 35px;
+    }
+    
+/*2010*/
+/*2013*/
+    .timeline-circle2013 {
+      position: absolute;
+      top: 20px;
+      left: 85%;
+      transform: translate(-50%, -50%);
+      background: linear-gradient(to bottom, #f8a385,#e75420);
+      color: white;
+      width: 70px;
+      height: 70px;
+      line-height: 70px;
+      text-align: center;
+      border-radius: 50%;
+      font-weight: bold;
+      box-shadow: 0 0 4px rgba(0,0,0,0.3);
+      z-index: 2;
+    }
+    .timeline-circle2013::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 140%;
+      width: 30px;
+      height: 6px;
+      background:  #f97316;
+      transform: translate(-100%, -50%);
+      z-index: -1;
+    }
+    .circle {
+      position: absolute;
+      top: 31%;
+      left: 48.7%;
+      width: 20px;
+      height: 20px;
+      background-color: #f97316;
+      border-radius: 50%;
+      z-index: 3;
+    }
+    .timeline-content2013 {
+        text-align: left;
+        margin-left: -25px ;
+        position: relative;
+        top: -55px;
+        right: 6%;
+      background: transparent;
+      padding: 25px;
+      border-radius: 15px;
+      border: 3px dashed #f97316;
+    }
+    .timeline-content2013 ul li{
+        margin-left: 20px;
+    }
+/*2013*/
+/*2019*/
+    .timeline-circle2019 {
+      position: absolute;
+      top: 0px;
+      left: 15%;
+      transform: translate(-50%, -50%);
+      background: linear-gradient(to top, #4d4c4c, #bdbbbb) ;
+      color: white;
+      width: 70px;
+      height: 70px;
+      line-height: 70px;
+      text-align: center;
+      border-radius: 50%;
+      font-weight: bold;
+      box-shadow: 0 0 4px rgba(0,0,0,0.3);
+      z-index: 2;
+    }
+    .circle-mini2019 {
+      position: absolute;
+      top: 55%;
+      left: -22%;
+      width: 20px;
+      height: 20px;
+      background-color: #4d4c4c;
+      border-radius: 50%;
+      z-index: 3;
+    }
+    .timeline-circle2019::before {
+      content: "";
+      position: absolute;
+      top: 52%;
+      left: 0%;
+      width: 30px;
+      height: 6px;
+      background: #4d4c4c;
+      transform: translate(-100%, -50%);
+      z-index: -1;
+    }
+
+    .timeline-content2019 {
+        text-align: left;
+        margin-right: -35px ;
+        position: relative;
+        top: -100px;
+        right: -7%;
+      background: transparent;
+      padding: 15px;
+      border-radius: 15px;
+      border: 3px dashed #4d4c4c;
+    }
+    .timeline-content2019 ul li {
+      margin-left: 40px;
+    }
+/*2019*/
+/*2019*/
+    .timeline-circle4 {
+        position: absolute;
+      top: -60px;
+      left: 85%;
+      transform: translate(-50%, -50%);
+      background: linear-gradient(to bottom, #f8a385,#e75420);
+      color: white;
+      width: 70px;
+      height: 70px;
+      line-height: 70px;
+      text-align: center;
+      border-radius: 50%;
+      font-weight: bold;
+      box-shadow: 0 0 4px rgba(0,0,0,0.3);
+      z-index: 2;
+    }
+    .timeline-circle4::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 140%;
+      width: 30px;
+      height: 6px;
+      background:  #f97316;
+      transform: translate(-100%, -50%);
+      z-index: -1;
+    }
+    .circle-mini4 {
+      position: absolute;
+      top: 45%;
+      left: 116%;
+      width: 20px;
+      height: 20px;
+      background-color: #f97316;
+      border-radius: 50%;
+      z-index: 3;
+    }
+    .timeline-content4 {
+        text-align: left;
+        margin-left: -25px ;
+        position: relative;
+        top: -140px;
+        right: 6%;
+      background: transparent;
+      padding: 45px;
+      border-radius: 15px;
+      border: 3px dashed #f97316;
+    }
+/*2024*/
+.timeline-circle2024 {
+      position: absolute;
+      top: -100px;
+      left: 15%;
+      transform: translate(-50%, -50%);
+      background: linear-gradient(to top, #4d4c4c, #bdbbbb) ;
+      color: white;
+      width: 70px;
+      height: 70px;
+      line-height: 70px;
+      text-align: center;
+      border-radius: 50%;
+      font-weight: bold;
+      box-shadow: 0 0 4px rgba(0,0,0,0.3);
+      z-index: 2;
+    }
+ .timeline-circle2024::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 0%;
+      width: 30px;
+      height: 6px;
+      background: #4d4c4c;
+      transform: translate(-100%, -50%);
+      z-index: -1;
+    }
+    .circle-mini2024 {
+      position: absolute;
+      top: 45%;
+      left: -22%;
+      width: 20px;
+      height: 20px;
+      background-color: #4d4c4c;
+      border-radius: 50%;
+      z-index: 3;
+    }
+    .timeline-content2024 {
+        text-align: left;
+        margin-right: -35px ;
+        position: relative;
+        top: -190px;
+        right: -7%;
+      background: transparent;
+      padding: 45px;
+      border-radius: 15px;
+      border: 3px dashed #4d4c4c;
+    }
+    .footer {
+  background-color: #1c1c3c;
+  color: #fff;
+  padding: 40px 20px;
+  font-family: Arial, sans-serif;
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-column {
+  flex: 1 1 220px;
+  color: #ffffff;
+}
+
+.footer h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: #ffffff;
+}
+
+.footer h4 {
+  color: #ffa726;
+  margin-bottom: 10px;
+}
+
+.footer p {
+  margin: 5px 0;
+  font-size: 14px;
+}
+
+.social-icons a {
+  margin-right: 10px;
+  font-size: 20px;
+  text-decoration: none;
+  color: white;
+}
+.footer a {
+  color: #ffffff;           
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer a:hover {
+  color: #ffcc80;          
+  text-decoration: underline;
+}
+
+.footer a:active {
+  color: #c77800;        
+}
+.social-icons:hover{
+    color: #ffcc80;
+}
+.logo_poly{
+  height: 60px; /* chỉnh kích thước tùy m */
+  margin-right: 20px;
+}
+@keyframes slide {
+      0% { transform: translateX(0); }
+      16.66% { transform: translateX(0); }
+      22.22% { transform: translateX(-100vw); }
+      38.88% { transform: translateX(-100vw); }
+      44.44% { transform: translateX(-200vw); }
+      61.1% { transform: translateX(-200vw); }
+      66.66% { transform: translateX(-100vw); }
+      83.32% { transform: translateX(-100vw); }
+      88.88% { transform: translateX(0); }
+      100% { transform: translateX(0); }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+        <a href="#">Giới thiệu</a>
+        <a href="#">Liên hệ</a>
+        <a href="#">Góp ý</a>
+        <a href="#">Hỏi đáp</a>
+        <span class="pngtree-icon-search-orange-image_329236.jpg"></span>
+      </nav>
+  
+    <div class="slider">
+      <img src="ảnh/HỌC NHANH - LÀM SỚM.png" alt="">
+      <img src="ảnh/HỌC NHANH - LÀM SỚM.png" alt="">
+      <img src="ảnh/HỌC NHANH - LÀM SỚM.png" alt="">
+      
+    </div>
+    <div class="logo_poly"><img src="ảnh/Bản sao logo_fpoly.png" alt="" width="100" height="100"></div>
+  </header>
+  <div class="content">
+    <h1>FPT POLYSCHOOL</h1>
+    <img src="ảnh/khat vonng doi thay.png" alt="">
+    <h2 class="vision">TẦM NHÌN</h2> 
+    <p class="sub-vision">Thương hiệu quốc gia - Công nghệ giáo dục - Đông đảo người học</p>
+    <img class="img-vision" src="ảnh/hbi.png" alt="">
+    <h2 class="vision">LỊCH SỬ HÌNH THÀNH</h2> <br>
+    <br>
+    <b class="sub-vision1">Hệ thống Cao đẳng FPT thành lập 2010</b>
+    <p class="sub-vision2">Là 1 trong 3 đơn vị thành viên, nắm giữ 1 trong 3 mảng hoạt động cốt lõi <br>
+                          của tập đoàn FPT - Tập đoàn tiên phong trong lĩnh vực CNTT tại việt nam </p>
+    <br>
+    <h2 class="vision">QUÁ TRÌNH PHÁT TRIỂN</h2> <br>
+  
+   <div class="timeline">
+    <div class="circle"></div>
+    <div class="timeline-event right">
+      <div class="timeline-circle2010">2010</div>
+      <div class="timeline-content2010">
+        <div class="mini-circle"></div>
+        <strong>Thành lập cao đẳng thực hành FPT Polytechnic</strong>
+        <ul>
+          <li>Đào tạo kỹ sư, cử nhân cao đẳng thực hành.</li>
+          <li>Bước tiến quan trọng trong việc mở rộng hệ đào tạo.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="timeline-event left">
+      <div class="timeline-circle2013">2013</div>
+      <div class="timeline-content2013">
+        <strong>Thành lập K-Beauty thuộc FPT Polytechnic</strong>
+        <ul>
+          <li>Đào tạo ngành thẩm mỹ và làm đẹp.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="timeline-event right">
+      <div class="timeline-circle2019">2019</div>
+      <div class="timeline-content2019">
+        <div class="circle-mini2019"></div>
+        <strong>Thành lập chương trình phổ thông cao đẳng</strong>
+        <ul>
+          <li>Đào tạo nghề cho học sinh THCS trở lên.</li>
+          <li>Lấy bằng cao đẳng chính quy.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="timeline-event left">
+      <div class="timeline-circle4">2019</div>
+      <div class="timeline-content4">
+        <div class="circle-mini4"></div>
+        <strong>Hitech gia nhập FPT Polytechnic</strong>
+      </div>
+    </div>
+
+    <div class="timeline-event right">
+      <div class="timeline-circle2024">2024</div>
+      <div class="timeline-content2024">
+        <div class="circle-mini2024"></div>
+        <strong>Chính thức đổi tên thành FPT Polyschool</strong>
+      </div>
+    </div>
+
+  </div>
+  <h2 class="vision">SƠ ĐỒ TỔ CHỨC</h2> <br>
+  <img src="ảnh/z6430406317622_8afca8dacb657f6460163539c57acbd5.jpg" width="1000" height="1000" alt="">
+  </div>
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-column">
+        <img src="ảnh/Bản sao logo_fpoly.png" alt="">
+        <p><strong>THÔNG TIN LIÊN HỆ</strong></p>
+        <p>📞 0963 400 865</p>
+        <p>✉️ phothongcaodang@fpt.edu.vn</p>
+        <div class="social-icons">
+          <a href="https://www.facebook.com/fptpolyschool1"><img src="ảnh/5.png" alt="" width="60" height="60"></a>
+          <a href="https://www.youtube.com/channel/UCGF73SUAjkefBo9H9DZ_EZw?view_as=subscriber"><img src="ảnh/6.png" alt="" width="60" height="60"></a>
+          <a href="https://polyschool.fpt.edu.vn/"><img src="ảnh/7.png" alt="" width="60" height="60"></a>
+          <a href="https://www.tiktok.com/@fptpolyschool"><img src="ảnh/8.png" alt="" width="60" height="60"></a>
+        </div>
+      </div>
+  
+      <div class="footer-column">
+        <h4>KHU VỰC MIỀN BẮC</h4>
+        <a href="https://polyschool.fpt.edu.vn/lien-he/">📍 Cơ sở tại Hà Nội</a><br>
+        <a href="https://polyschool.fpt.edu.vn/lien-he/#1670308916780-d25a12a6-9ff8">📍 Cơ sở tại Thái Nguyên</a><br>
+        <a href="https://polyschool.fpt.edu.vn/lien-he/#1617073238592-d8c868c8-8901">📍 Cơ sở tại Bắc Giang</a><br>
+        <a href="https://polyschool.fpt.edu.vn/lien-he/#1670308809028-d6dfd1cd-4c88">📍 Cơ sở tại Hải Phòng</a><br>
+        <a href="https://polyschool.fpt.edu.vn/lien-he/#1671766401587-56d3f8b8-79e7">📍 Cơ sở tại Hà Nam</a><br>
+        <a href="https://polyschool.fpt.edu.vn/lien-he/#1671766498220-95457d75-4f6c">📍 Cơ sở tại Vĩnh Phúc</a><br>
+        <a href="https://polyschool.fpt.edu.vn/lien-he/#1677489325741-32de8fb1-70e4">📍 Cơ sở tại Nam Định</a><br>
+        <a href="https://polyschool.fpt.edu.vn/lien-he/#1706173022014-390c7860-10f3">📍 Cơ sở tại Quảng Ninh</a><br>
+      </div>
+      
+  
+      <div class="footer-column">
+        <h4>KHU VỰC MIỀN TRUNG</h4>
+        <a href="https://polyschool.fpt.edu.vn/lien-he/#1671766561105-a504710c-b17e">📍 Cơ sở tại Thanh Hóa</p>
+        <a href="https://polyschool.fpt.edu.vn/lien-he/#1617073242012-8ca3f93a-fe3b">📍 Cơ sở tại Huế</p>
+        <a href="https://polyschool.fpt.edu.vn/lien-he/#1601258117682-f2460376-ece7">📍 Cơ sở tại Đà Nẵng</p>
+        <a href="https://polyschool.fpt.edu.vn/lien-he/#1670309029599-9fc0d44f-a1f8">📍 Cơ sở tại Bình Định</p>
+        <a href="https://polyschool.fpt.edu.vn/lien-he/#1671766631591-7f8d053f-9bf7">📍 Cơ sở tại Quảng Nam</p>
+        <a href="https://polyschool.fpt.edu.vn/lien-he/#1676883614704-c6a00b0d-f63d">📍 Cơ sở tại Nghệ An</p>
+        <a href="https://polyschool.fpt.edu.vn/lien-he/#1601258119053-52f4d27b-0b5f">📍 Cơ sở tại Tây Nguyên</p>
+        <a href="https://polyschool.fpt.edu.vn/lien-he/#1679720657936-4e346d4f-c209">📍 Cơ sở tại Nha Trang</p>
+      </div>
+  
+      <div class="footer-column">
+        <h4>KHU VỰC MIỀN NAM</h4>
+        <a href="https://polyschool.fpt.edu.vn/lien-he/#1670309029032-2903bf9e-20f5">📍 Cơ sở tại Bình Dương</p>
+        <a href="https://polyschool.fpt.edu.vn/lien-he/#1671766678865-e3b9e8a5-887f">📍 Cơ sở tại Bình Phước</p>
+        <a href="https://polyschool.fpt.edu.vn/lien-he/#1611896134847-6db62e7a-f997">📍 Cơ sở tại Đồng Nai</p>
+        <a href="https://polyschool.fpt.edu.vn/lien-he/#1670814668737-5d659f70-d625">📍 Cơ sở tại Cần Thơ</p>
+        <a href="https://polyschool.fpt.edu.vn/lien-he/#1601258120102-c4b472fc-e492">📍 Cơ sở tại TP. HCM</p>
+        <a href="https://polyschool.fpt.edu.vn/lien-he/#1671766725197-33f328ba-37e1">📍 Cơ sở tại Bà Rịa - Vũng Tàu</p>
+        <a href="https://polyschool.fpt.edu.vn/lien-he/#1706173278464-ce19cd26-0946">📍 Cơ sở tại Cà Mau</p>
+        <a href="https://polyschool.fpt.edu.vn/lien-he/#1706173356027-1a21ee13-48d7">📍 Cơ sở tại Tây Ninh</p>
+      </div>
+    </div>
+  </footer>
+  
+</body>
+</html>
